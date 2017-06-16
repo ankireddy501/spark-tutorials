@@ -7,7 +7,7 @@ import org.apache.spark.sql.SparkSession;
 import static org.apache.spark.sql.functions.col;
 
 /**
- * Created by anki on 6/9/2017.
+ * Created by anki/nag on 6/9/2017.
  */
 public class SparkSQLJson {
 
@@ -26,6 +26,8 @@ public class SparkSQLJson {
         dataSet.select(col("name"), col("age")).show();
         dataSet.select(col("name").as("NAME"), col("age").as("AGE")).show();
         dataSet.select(col("name").as("NAME"), col("age").divide("2")).show();
+        dataSet.filter(col("age").gt(21)).show();
+        dataSet.groupBy("age").count().show();
         spark.stop();
     }
 }
